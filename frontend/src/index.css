@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+.input{
+    @apply  py-1 px-2 my-2 border rounded-md ml-auto
+}
+.container{
+    @apply w-full flex justify-between items-center
+}
+
+.button{
+    @apply p-2 bg-blue-400 rounded-lg my-2 active:shadow-xl active:bg-blue-500
+}
+.button-cancel{
+    @apply p-2 bg-red-400 rounded-lg my-2 active:shadow-xl active:bg-red-500
+}
