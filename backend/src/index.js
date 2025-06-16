@@ -15,6 +15,9 @@ app.use(
 );
 app.use(express.json());
 app.use('/api/v1',employeeRouter)
+app.use('/',(req,res)=>{
+  res.send("working");
+})
 
 const dbConnection = async () => {
   await mongoose.connect(process.env.DB_URI).then(() => {
@@ -28,4 +31,3 @@ const dbConnection = async () => {
   });
 };
 dbConnection();
-app.use(express.json());
