@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import FormPage from "./FormPage";
 import { IndianRupee, Trash } from 'lucide-react';
+import { GLOBAL_BASE_URL, LOCAL_BASE_URL, NODE_ENV } from "../constant";
 
 const ViewPage = () => {
     const [hide,setHide] = useState(false);
@@ -16,7 +17,7 @@ const ViewPage = () => {
     const getEmployees = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5001/api/v1/employee",
+        (NODE_ENV==="production"?GLOBAL_BASE_URL:LOCAL_BASE_URL)+"/api/v1/employee",
         { withCredentials: true }
       );
       toast.success(
@@ -34,7 +35,7 @@ const ViewPage = () => {
     const deleteEmployee = async (emp_id) => {
     try {
       const response = await axios.delete(
-    `http://localhost:5001/api/v1/employee/${emp_id}`,
+    (NODE_ENV==="production"?GLOBAL_BASE_URL:LOCAL_BASE_URL)+`/api/v1/employee/${emp_id}`,
         { withCredentials: true }
       );
       toast.success(
@@ -74,7 +75,7 @@ const ViewPage = () => {
           </thead>
           <tbody>
            
-            {employees.length > 0 && (
+            {employees && employees.length > 0 && (
               employees.map((emp) => (
                 <tr key={emp._id}>
                 <td>{emp._id}</td>

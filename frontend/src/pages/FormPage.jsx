@@ -1,6 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { GLOBAL_BASE_URL, LOCAL_BASE_URL, NODE_ENV } from "../constant";
 
 const FormPage = ({ setHide, setEmployees }) => {
   const [employee, setEmployee] = useState({
@@ -30,7 +31,7 @@ const FormPage = ({ setHide, setEmployees }) => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/v1/employee",
+        (NODE_ENV==="production"?GLOBAL_BASE_URL:LOCAL_BASE_URL)+"/api/v1/employee",
         { name, emailId, salary, role, doj, dob, dept },
         { withCredentials: true }
       );
