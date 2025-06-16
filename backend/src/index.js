@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(
   cors({
-    origin: ["http://localhost:5173","https://employee-management-system-gbq4.onrender.com"],
+    origin: ["http://localhost:5173","https://simple-employee-management-system.onrender.com"],
     credentials: true
   })
 );
